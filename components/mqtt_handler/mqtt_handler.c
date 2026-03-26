@@ -3,6 +3,8 @@
 // or
 
 static const char *TAG = "mqtt_handler";
+static esp_mqtt_client_handle_t client = NULL;
+static bool isConnected = false;
 
 static void mqtt5_event_handler(void *handler_args, esp_event_base_t base,
                                 int32_t event_id, void *event_data) {
@@ -15,6 +17,7 @@ static void mqtt5_event_handler(void *handler_args, esp_event_base_t base,
   switch ((esp_mqtt_event_id_t)event_id) {
   case MQTT_EVENT_CONNECTED:
     ESP_LOGI(TAG, "MQTT_EVENT_CONNECTED");
+    isConnected = true;
     msg_id = esp_mqtt_client_publish(client, "test", "ovobbbb aaaaa", 0, 1, 1);
     ESP_LOGI(TAG, "sent publish successful, msg_id=%d", msg_id);
     msg_id = esp_mqtt_client_subscribe(client, "test", 0);
@@ -22,6 +25,7 @@ static void mqtt5_event_handler(void *handler_args, esp_event_base_t base,
     break;
   case MQTT_EVENT_DISCONNECTED:
     ESP_LOGI(TAG, "MQTT_EVENT_DISCONNECTED");
+    isConnected = false;
     break;
   case MQTT_EVENT_SUBSCRIBED:
     ESP_LOGI(TAG, "MQTT_EVENT_SUBSCRIBED, msg_id=%d, reason code=0x%02x",
@@ -49,6 +53,12 @@ static void mqtt5_event_handler(void *handler_args, esp_event_base_t base,
   }
 }
 
+void mqtt5_publish(const char *topic, const char *msg) {
+  if (client && isConnected) {
+    esp_mqtt_client_publish(client, topic, msg, 0, 0, 0);
+  }
+}
+
 void mqtt5_start(void) {
   esp_mqtt_client_config_t mqtt5_client = {
       .broker.address.uri = CONFIG_MQTT_BROKER_URI,
@@ -56,7 +66,8 @@ void mqtt5_start(void) {
       .credentials.authentication.password = CONFIG_MQTT_BROKER_PASSWORD,
   };
 
-  esp_mqtt_client_handle_t client = esp_mqtt_client_init(&mqtt5_client);
+  // esp_mqtt_client_handle_t client = esp_mqtt_client_init(&mqtt5_client);
+  client = esp_mqtt_client_init(&mqtt5_client);
   esp_mqtt_client_register_event(client, ESP_EVENT_ANY_ID, mqtt5_event_handler,
                                  client);
   esp_mqtt_client_start(client);
