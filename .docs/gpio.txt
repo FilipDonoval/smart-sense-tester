@@ -1,0 +1,20 @@
+# Espressif gpio docs
+https://docs.espressif.com/projects/esp-idf/en/stable/esp32/api-reference/peripherals/gpio.html
+
+# Analog to Digital converter (ADC) Oneshot Mode Driver docs
+https://docs.espressif.com/projects/esp-idf/en/stable/esp32/api-reference/peripherals/adc/adc_oneshot.html
+
+# ADC Espressif github example
+https://github.com/espressif/esp-idf/tree/v6.0/examples/peripherals/adc/oneshot_read
+
+# ADC esp-idf tutorial
+https://github.com/espressif/esp-idf/tree/v6.0/examples/peripherals/adc/oneshot_read
+
+# ADC esp-idf video tutorial and github link
+https://www.youtube.com/watch?v=i5JbeicsFjg
+https://github.com/ltkdt/LTKDT-s_small_projects/blob/master/esp_idf_adc/main.c
+
+# GPIO read digital inputs
+https://randomnerdtutorials.com/esp-idf-esp32-gpio-inputs/
+
+

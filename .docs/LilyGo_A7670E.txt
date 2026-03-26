@@ -1,0 +1,14 @@
+# LilyGo t-sim-a7670e website
+https://lilygo.cc/en-us/products/t-sim-a7670e?srsltid=AfmBOor88yWp58HNnSi04LIz5XmQrs-JSvuVYaaGRHKJu2CWzJlEdCFX
+
+# LilyGo wiki
+https://www.tinytronics.nl/en/development-boards/microcontroller-boards/with-telecommunication/lilygo-ttgo-t-sim-a7670e-r2-esp32-esp32-wrover-with-18650-battery-holder
+
+# LilyGo A7670X ESP32 README
+https://github.com/Xinyuan-LilyGO/LilyGo-Modem-Series/blob/main/docs/en/esp32/a7670-esp32/REAMDE.MD
+
+# Getting Started with LilyGo A7670
+https://randomnerdtutorials.com/lilygo-ttgo-t-a7670g-a7670e-a7670sa-esp32/
+
+# More specifications
+https://www.tinytronics.nl/en/development-boards/microcontroller-boards/with-telecommunication/lilygo-ttgo-t-sim-a7670e-r2-esp32-esp32-wrover-with-18650-battery-holder

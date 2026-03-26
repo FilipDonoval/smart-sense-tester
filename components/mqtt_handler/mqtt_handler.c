@@ -18,10 +18,12 @@ static void mqtt5_event_handler(void *handler_args, esp_event_base_t base,
   case MQTT_EVENT_CONNECTED:
     ESP_LOGI(TAG, "MQTT_EVENT_CONNECTED");
     isConnected = true;
-    msg_id = esp_mqtt_client_publish(client, "test", "ovobbbb aaaaa", 0, 1, 1);
-    ESP_LOGI(TAG, "sent publish successful, msg_id=%d", msg_id);
-    msg_id = esp_mqtt_client_subscribe(client, "test", 0);
-    ESP_LOGI(TAG, "subscribe to topic successful, msg_id=%d", msg_id);
+    /*
+msg_id = esp_mqtt_client_publish(client, "test", "ovobbbb aaaaa", 0, 1, 1);
+ESP_LOGI(TAG, "sent publish successful, msg_id=%d", msg_id);
+msg_id = esp_mqtt_client_subscribe(client, "test", 0);
+ESP_LOGI(TAG, "subscribe to topic successful, msg_id=%d", msg_id);
+    */
     break;
   case MQTT_EVENT_DISCONNECTED:
     ESP_LOGI(TAG, "MQTT_EVENT_DISCONNECTED");
@@ -30,7 +32,7 @@ static void mqtt5_event_handler(void *handler_args, esp_event_base_t base,
   case MQTT_EVENT_SUBSCRIBED:
     ESP_LOGI(TAG, "MQTT_EVENT_SUBSCRIBED, msg_id=%d, reason code=0x%02x",
              event->msg_id, (uint8_t)*event->data);
-    msg_id = esp_mqtt_client_publish(client, "test", "data", 0, 0, 0);
+    // msg_id = esp_mqtt_client_publish(client, "test", "data", 0, 0, 0);
     break;
   case MQTT_EVENT_UNSUBSCRIBED:
     ESP_LOGI(TAG, "MQTT_EVENT_UNSUBSCRIBED, msg_id=%d", event->msg_id);
@@ -66,7 +68,6 @@ void mqtt5_start(void) {
       .credentials.authentication.password = CONFIG_MQTT_BROKER_PASSWORD,
   };
 
-  // esp_mqtt_client_handle_t client = esp_mqtt_client_init(&mqtt5_client);
   client = esp_mqtt_client_init(&mqtt5_client);
   esp_mqtt_client_register_event(client, ESP_EVENT_ANY_ID, mqtt5_event_handler,
                                  client);

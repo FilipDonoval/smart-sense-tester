@@ -1,0 +1,14 @@
+#getting started with wifi on esp32
+https://developer.espressif.com/blog/getting-started-with-wifi-on-esp-idf/
+
+#how to connect esp32 to wifi
+https://medium.com/@fatehsali517/how-to-connect-esp32-to-wifi-using-esp-idf-iot-development-framework-d798dc89f0d6
+
+#Creating a WiFi driver with esp-idf
+https://shawnhymel.com/2967/
+
+#Espressif how to write wifi application
+https://docs.espressif.com/projects/esp-idf/en/stable/esp32/api-guides/wifi-driver/overview.html#how-to-write-a-wi-fi-application
+
+#github connect to wifi example
+https://github.com/DiegoPaezA/ESP32-freeRTOS/tree/master/wifi_connect_4

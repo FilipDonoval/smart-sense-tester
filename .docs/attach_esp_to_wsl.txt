@@ -1,0 +1,18 @@
+
+https://developer.espressif.com/blog/espressif-devkits-with-wsl2/
+
+# Attach the USB to wsl2
+start wsl
+
+windows cmd
+    usbipd list #find busid of usb32
+
+windows cmd admin
+    usbipd bind --busid "busid"  #usbipd bind --busid 1-2
+
+windows cmd
+    usbipd attach --wsl --busid "busid"  #usbipd attach --wsl --busid 1-2
+
+# Detach the USB
+windows cmd
+    usbipd detach --busid "busid"  #usbipd detach --busid 1-2

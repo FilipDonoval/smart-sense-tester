@@ -1,0 +1,17 @@
+# mqtt espressif docs
+https://docs.espressif.com/projects/esp-mqtt/en/latest/esp32/
+
+# mqtt5 espressif github example
+https://github.com/espressif/esp-mqtt/blob/master/examples/mqtt5/main/app_main.c
+
+# mqtt espressif github example
+https://github.com/espressif/esp-mqtt/blob/master/examples/tcp/main/app_main.c
+
+# github wifi mqtt example
+https://github.com/DiegoPaezA/ESP32-freeRTOS/tree/master/wifi_mqtt_6
+
+# mqtt last will
+https://cedalo.com/blog/mqtt-last-will-explained-and-example/
+
+# mqtt publish subscribe example github
+https://github.com/nopnop2002/esp-idf-mqtt-file/blob/main/main/mqtt_sub.c
