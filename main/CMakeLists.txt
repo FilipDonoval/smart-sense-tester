@@ -1,3 +1,3 @@
 idf_component_register(SRCS "tester.c"
-                    PRIV_REQUIRES esp_wifi nvs_flash wifi_sta
+                    PRIV_REQUIRES esp_wifi nvs_flash wifi_sta mqtt_handler
                     INCLUDE_DIRS ".")

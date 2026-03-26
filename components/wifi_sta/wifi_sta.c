@@ -17,7 +17,7 @@ static void event_handler(void *arg, esp_event_base_t event_base,
     esp_wifi_connect();
   } else if (event_base == WIFI_EVENT &&
              event_id == WIFI_EVENT_STA_DISCONNECTED) {
-    if (s_retry_number < MAX_RECONNECT_RETRY_NUMBER) {
+    if (s_retry_number < CONFIG_MAX_RECONNECT_TRY) {
       xEventGroupClearBits(wifi_event_group, WIFI_CONNECTED_BIT);
       esp_wifi_connect();
       s_retry_number++;
@@ -106,7 +106,7 @@ esp_err_t wifi_sta_init(EventGroupHandle_t event_group) {
   ESP_ERROR_CHECK(esp_wifi_set_config(WIFI_IF_STA, &wifi_config));
   ESP_ERROR_CHECK(esp_wifi_start());
 
-  ESP_LOGI(TAG, "wifi_init_sta finished.");
+  ESP_LOGI(TAG, "wifi_sta_init finished.");
 
   EventBits_t bits = xEventGroupWaitBits(wifi_event_group, WIFI_CONNECTED_BIT,
                                          pdFALSE, pdTRUE, portMAX_DELAY);

@@ -9,6 +9,10 @@ menu "WiFi STA configuration"
         string "WiFi password"
         default "mypassword"
 
+    config MAX_RECONNECT_TRY
+        int "Maximum reconnect tries"
+        default 5
+
     choice WIFI_STA_AUTH_MODE
         prompt "Minimum WiFi authentication mode"
         default WIFI_STA_AUTH_WPA2_PSK

@@ -1,0 +1,20 @@
+menu "MQTT handler configuration"
+    config MQTT_BROKER_URI
+        string "Broker uri"
+        default "myuri"
+        help
+            Uri of MQTT broker
+
+    config MQTT_BROKER_USERNAME
+        string "Username"
+        default "myusername"
+        help
+            Username for connecting to MQTT broker
+
+    config MQTT_BROKER_PASSWORD
+        string "Password"
+        default "mypassword"
+        help
+            Password for connecting to MQTT broker
+
+endmenu

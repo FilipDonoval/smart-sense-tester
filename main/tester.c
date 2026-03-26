@@ -12,6 +12,7 @@
 #include "sdkconfig.h"
 #include <stdio.h>
 
+#include "mqtt_handler.h"
 #include "wifi_sta.h"
 
 static const char *TAG = "tester_main";
@@ -39,6 +40,10 @@ void app_main(void) {
   network_event_bits =
       xEventGroupWaitBits(network_event_group, WIFI_CONNECTED_BIT, pdFALSE,
                           pdTRUE, pdMS_TO_TICKS(5000));
+  if (network_event_bits & WIFI_CONNECTED_BIT) {
+    ESP_LOGI(TAG, "starting mqtt5");
+    mqtt5_start();
+  }
 
   while (1) {
     network_event_bits = xEventGroupGetBits(network_event_group);
@@ -48,6 +53,6 @@ void app_main(void) {
       ESP_LOGE(TAG, "no connection");
     }
 
-    vTaskDelay(1000 / portTICK_PERIOD_MS);
+    vTaskDelay(16000 / portTICK_PERIOD_MS);
   }
 }
