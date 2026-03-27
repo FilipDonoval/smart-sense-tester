@@ -1,11 +1,14 @@
 #include "esp_err.h"
 #include "esp_event.h"
 #include "esp_log.h"
+#include "esp_netif.h"
 #include "freertos/FreeRTOS.h"
+#include "freertos/idf_additions.h"
 #include "nvs_flash.h"
 #include "sdkconfig.h"
 #include <stdio.h>
 
+#include "a7670_modem.h"
 #include "battery.h"
 #include "mqtt_handler.h"
 #include "wifi_sta.h"
@@ -29,19 +32,26 @@ void app_main(void) {
   }
   ESP_ERROR_CHECK(esp_err);
 
+  ESP_ERROR_CHECK(esp_netif_init());
+  ESP_ERROR_CHECK(esp_event_loop_create_default());
+
   ESP_LOGI(TAG, "ESP_WIFI_MODE_STA");
   ESP_ERROR_CHECK(wifi_sta_init(network_event_group));
 
   network_event_bits =
       xEventGroupWaitBits(network_event_group, WIFI_CONNECTED_BIT, pdFALSE,
                           pdTRUE, pdMS_TO_TICKS(5000));
+
   if (network_event_bits & WIFI_CONNECTED_BIT) {
     ESP_LOGI(TAG, "starting mqtt5");
+
     mqtt5_start();
   }
 
   xTaskCreatePinnedToCore(read_battery_stats, "read battery stats", 4096, NULL,
                           10, NULL, 0);
+
+  modem_setup();
 
   while (1) {
     network_event_bits = xEventGroupGetBits(network_event_group);
