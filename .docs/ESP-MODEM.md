@@ -33,6 +33,11 @@
 
 ## Docs
 
+### Espressif Docs
+
+- C API <br> <https://docs.espressif.com/projects/esp-protocols/esp_modem/docs/latest/api_docs.html#_CPPv420esp_modem_dce_mode_t>
+- Brief Intro <br> <https://docs.espressif.com/projects/esp-protocols/esp_modem/docs/latest/README.html>
+
 ### LilyGo A7670 Pin Map
 
 | Name                                 | GPIO NUM | Free |
