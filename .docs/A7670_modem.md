@@ -32,5 +32,16 @@ https://github.com/espressif/esp-protocols/blob/ca6e2835fe53bbe0996d8f5fcbcd539a
 - c++ interface  
 https://docs.espressif.com/projects/esp-protocols/esp_modem/docs/latest/cxx_api_docs.html
 
+## TinyGSM
+Arduino modem library.
+- supports A7670 also over A7600 instructions.
+- For using it with esp-idf including complete arduino enviroment is required
+- Doesn't nativly work with esp-idf mqtt, arduino mqtt library needs to be used.
+
+- TinyGSM github  
+https://github.com/vshymanskyy/TinyGSM
+
+- LilyGo A7670 example using a7600 define  
+https://github.com/Xinyuan-LilyGO/LilyGo-T-PCIE/blob/master/examples/A7670/TinyGSM_Net_GNSS/TinyGSM_Net_GNSS.ino
 
 
